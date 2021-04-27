@@ -9,6 +9,6 @@
 
     <style name="SplashActivityStyle" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimaryDark">#C4C5C4</item>
+        <item name="colorPrimaryDark">#FFFFFF</item>
     </style>
 </resources>
