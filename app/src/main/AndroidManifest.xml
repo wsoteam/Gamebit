@@ -10,14 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.game.SettingActivity"
+        <activity android:name=".presentation.game.HighscoresActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/SplashActivityStyle">
-        </activity>
+            android:theme="@style/SplashActivityStyle"></activity>
+        <activity
+            android:name=".presentation.game.SettingActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/SplashActivityStyle"></activity>
         <activity
             android:name=".presentation.game.MenuActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/SplashActivityStyle"></activity>
+            android:theme="@style/SplashActivityStyle" />
         <activity
             android:name=".presentation.SplashActivity"
             android:screenOrientation="landscape"
@@ -31,7 +34,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/SplashActivityStyle"></activity>
+            android:theme="@style/SplashActivityStyle" />
     </application>
 
 </manifest>

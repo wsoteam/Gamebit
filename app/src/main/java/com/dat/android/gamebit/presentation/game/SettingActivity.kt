@@ -26,7 +26,7 @@ class SettingActivity : AppCompatActivity(R.layout.activity_setting) {
         }
     }
 
-    private fun updateUI() {
+     private fun updateUI() {
         var backState = PreferenceProvider.getBackgroundStateSetting()
         when(backState){
             PreferenceProvider.BACKGROUND_BLUE -> {
@@ -95,13 +95,13 @@ class SettingActivity : AppCompatActivity(R.layout.activity_setting) {
     }
     private fun setBackgroundRed() {
         sv_color_setting.setBackgroundResource(R.drawable.gradient_splash_red)
-        tv_line_settings_background.setBackgroundResource(R.drawable.ic_line_green_setting)
-        tv_line_settings_sound.setBackgroundResource(R.drawable.ic_line_green_setting)
+        tv_line_settings_background.setBackgroundResource(R.drawable.ic_line_setting_red)
+        tv_line_settings_sound.setBackgroundResource(R.drawable.ic_line_setting_red)
     }
     private fun setBackgroundBlue() {
         sv_color_setting.setBackgroundResource(R.drawable.gradient_splash_blue)
-        tv_line_settings_background.setBackgroundResource(R.drawable.ic_line_green_setting)
-        tv_line_settings_sound.setBackgroundResource(R.drawable.ic_line_green_setting)
+        tv_line_settings_background.setBackgroundResource(R.drawable.ic_line_setting_blue)
+        tv_line_settings_sound.setBackgroundResource(R.drawable.ic_line_setting_blue)
     }
 }
 
