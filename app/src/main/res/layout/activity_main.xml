@@ -1,18 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".presentation.game.MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv_background_game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_splash"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_trophy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivRoulete"
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/roulette_lol" />
+
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="276dp"
+        android:src="@drawable/ic_tr_rul"
+        android:translationY="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivRoulete"
+        app:layout_constraintEnd_toEndOf="@+id/ivRoulete"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="@+id/ivRoulete"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="270dp"
+        android:fontFamily="@font/poppinsmed"
+        android:text="Balance amount"
+        android:textColor="#ffffff"
+        android:textSize="16.1sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_game"
+        app:layout_constraintHorizontal_bias="0.798"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_you_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_rectangle_menu"
+        android:fontFamily="@font/poppinsmed"
+        android:text="$5000"
+        android:textColor="#000000"
+        android:textSize="14.6sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppinsmed"
+        android:gravity="center"
+        android:text="Make a bet"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_sum"
+        app:layout_constraintStart_toStartOf="@+id/tv_write_you_sum"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_write_you_sum"
+        android:layout_width="280dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/ic_rectangle_sum"
+        android:fontFamily="@font/poppinsmed"
+        android:gravity="center_horizontal"
+        android:text="$150"
+        android:textColor="#ffffff"
+        android:textSize="25.7sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppinsmed"
+        android:text="Pick a number"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_number"
+        app:layout_constraintStart_toStartOf="@+id/tv_write_you_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_write_you_sum" />
+
+    <TextView
+        android:id="@+id/tv_write_you_number"
+        android:layout_width="280dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ic_rectangle_sum"
+        android:fontFamily="@font/poppinsmed"
+        android:gravity="center_horizontal"
+        android:text="10"
+        android:textColor="#ffffff"
+        android:textSize="25.7sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_sum"
+        app:layout_constraintStart_toStartOf="@+id/tv_write_you_sum"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/tv_button_black"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/ic_rectangle_black"
+        android:fontFamily="@font/poppinsmed"
+        android:gravity="center"
+        android:text="Black"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tv_write_you_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_write_you_number" />
+
+    <TextView
+        android:id="@+id/tv_button_red"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/ic_rectangle_red"
+        android:fontFamily="@font/poppinsmed"
+        android:gravity="center"
+        android:text="Red"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_number"
+        app:layout_constraintStart_toEndOf="@+id/tv_button_black"
+        app:layout_constraintTop_toBottomOf="@+id/tv_write_you_number" />
+
+    <TextView
+        android:id="@+id/tv_button_play"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_rectangle_play"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="PLAY NOW"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="430dp"
+        tools:layout_editor_absoluteY="327dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

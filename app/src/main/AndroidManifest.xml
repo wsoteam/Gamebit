@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.game.MainActivity"
             android:screenOrientation="landscape"
             android:theme="@style/SplashActivityStyle" />
     </application>

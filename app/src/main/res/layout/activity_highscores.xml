@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".presentation.game.HighscoresActivity"
     android:background="@drawable/gradient_splash"
-    android:id="@+id/ll_background_highscores">
+    android:id="@+id/fl_background_highscores">
 
 
     <ImageView
@@ -34,13 +34,13 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="120dp">
+        android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tv_highscores_line_1_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
             android:fontFamily="@font/poppinsmed"
             android:textStyle="normal"
             android:textSize="26sp"
@@ -48,9 +48,10 @@
             android:text="1." />
 
         <TextView
+            android:id="@+id/tv_highscores_line_1_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@font/poppinsmed"
             android:textStyle="normal"
             android:textSize="26sp"
@@ -59,17 +60,185 @@
             android:text="gardio13" />
 
         <TextView
+            android:id="@+id/tv_highscores_line_1_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="120dp"
             android:fontFamily="@font/poppinsmed"
             android:textStyle="normal"
             android:textSize="26sp"
             android:textColor="#ffffff"
-            android:gravity="end"
             android:text="14103" />
-
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_highscores_color_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/ic_line_green_setting">
+
+    <TextView
+        android:id="@+id/tv_highscores_line_2_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:fontFamily="@font/poppinsmed"
+        android:textStyle="normal"
+        android:textSize="26sp"
+        android:textColor="#ffffff"
+        android:text="2." />
+
+    <TextView
+        android:id="@+id/tv_highscores_line_2_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/poppinsmed"
+        android:textStyle="normal"
+        android:textSize="26sp"
+        android:textColor="#ffffff"
+        android:gravity="center_horizontal"
+        android:text="gardio13" />
+
+    <TextView
+        android:id="@+id/tv_highscores_line_2_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="120dp"
+        android:fontFamily="@font/poppinsmed"
+        android:textStyle="normal"
+        android:textSize="26sp"
+        android:textColor="#ffffff"
+        android:text="14103" />
+</FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_highscores_line_3_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:text="3." />
+
+            <TextView
+                android:id="@+id/tv_highscores_line_3_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:text="ololo_LOL12" />
+
+            <TextView
+                android:id="@+id/tv_highscores_line_3_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="120dp"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:text="14103" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_highscores_color_line_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/ic_line_green_setting">
+
+            <TextView
+                android:id="@+id/tv_highscores_line_4_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:text="4." />
+
+            <TextView
+                android:id="@+id/tv_highscores_line_4_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:text="gardio13" />
+
+            <TextView
+                android:id="@+id/tv_highscores_line_4_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="120dp"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:text="2545458" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_highscores_line_5_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:text="5." />
+
+            <TextView
+                android:id="@+id/tv_highscores_line_5_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:text="gardio13" />
+
+            <TextView
+                android:id="@+id/tv_highscores_line_5_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="120dp"
+                android:fontFamily="@font/poppinsmed"
+                android:textStyle="normal"
+                android:textSize="26sp"
+                android:textColor="#ffffff"
+                android:text="14103" />
+        </FrameLayout>
 
     </LinearLayout>
 </FrameLayout>
