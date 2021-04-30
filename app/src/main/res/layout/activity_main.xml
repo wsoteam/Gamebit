@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient_splash"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <ImageView
@@ -94,27 +94,55 @@
         android:textColor="#ffffff"
         android:textSize="22sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_sum"
-        app:layout_constraintStart_toStartOf="@+id/tv_write_you_sum"
+        app:layout_constraintEnd_toEndOf="@+id/llBet"
+        app:layout_constraintStart_toStartOf="@+id/llBet"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_write_you_sum"
-        android:layout_width="280dp"
+    <LinearLayout
+        android:id="@+id/llBet"
+        android:layout_width="290dp"
         android:layout_height="39dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/ic_rectangle_sum"
-        android:fontFamily="@font/poppinsmed"
-        android:gravity="center_horizontal"
-        android:text="$150"
-        android:textColor="#ffffff"
-        android:textSize="25.7sp"
-        android:textStyle="normal"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <ImageView
+            android:id="@+id/ivLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_left_bet" />
+
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/npBet"
+            android:layout_width="230dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center_horizontal"
+            app:np_dividerColor="#00FFFFFF"
+            app:np_fadingEdgeEnabled="false"
+            app:np_orientation="horizontal"
+            app:np_selectedTextColor="#ffffff"
+            app:np_textColor="#66FFFFFF"
+            app:np_selectedTextSize="22sp"
+            app:np_textSize="21sp"
+            app:np_wheelItemCount="5" />
+
+        <ImageView
+            android:id="@+id/ivRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_right_bet" />
+
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/textView5"
@@ -126,25 +154,55 @@
         android:textColor="#ffffff"
         android:textSize="22sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_number"
-        app:layout_constraintStart_toStartOf="@+id/tv_write_you_number"
-        app:layout_constraintTop_toBottomOf="@+id/tv_write_you_sum" />
+        app:layout_constraintEnd_toEndOf="@+id/llNumberRoulete"
+        app:layout_constraintStart_toStartOf="@+id/llNumberRoulete"
+        app:layout_constraintTop_toBottomOf="@+id/llBet" />
 
-    <TextView
-        android:id="@+id/tv_write_you_number"
-        android:layout_width="280dp"
+
+    <LinearLayout
+        android:id="@+id/llNumberRoulete"
+        android:layout_width="290dp"
         android:layout_height="39dp"
-        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
         android:background="@drawable/ic_rectangle_sum"
-        android:fontFamily="@font/poppinsmed"
-        android:gravity="center_horizontal"
-        android:text="10"
-        android:textColor="#ffffff"
-        android:textSize="25.7sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_sum"
-        app:layout_constraintStart_toStartOf="@+id/tv_write_you_sum"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/llBet"
+        app:layout_constraintStart_toStartOf="@+id/llBet"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <ImageView
+            android:id="@+id/ivLeftNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_left_bet" />
+
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/npNumber"
+            android:layout_width="230dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center_horizontal"
+            app:np_dividerColor="#00FFFFFF"
+            app:np_fadingEdgeEnabled="false"
+            app:np_orientation="horizontal"
+            app:np_selectedTextColor="#ffffff"
+            app:np_selectedTextSize="22sp"
+            app:np_textColor="#66FFFFFF"
+            app:np_textSize="21sp"
+            app:np_wheelItemCount="5" />
+
+        <ImageView
+            android:id="@+id/ivRightNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_right_bet" />
+
+
+    </LinearLayout>
+
+
 
     <TextView
         android:id="@+id/tv_button_black"
@@ -158,8 +216,8 @@
         android:textColor="#ffffff"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="@+id/tv_write_you_number"
-        app:layout_constraintTop_toBottomOf="@+id/tv_write_you_number" />
+        app:layout_constraintStart_toStartOf="@+id/llNumberRoulete"
+        app:layout_constraintTop_toBottomOf="@+id/llNumberRoulete" />
 
     <TextView
         android:id="@+id/tv_button_red"
@@ -174,25 +232,27 @@
         android:textColor="#ffffff"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/tv_write_you_number"
+        app:layout_constraintEnd_toEndOf="@+id/llNumberRoulete"
         app:layout_constraintStart_toEndOf="@+id/tv_button_black"
-        app:layout_constraintTop_toBottomOf="@+id/tv_write_you_number" />
+        app:layout_constraintTop_toBottomOf="@+id/llNumberRoulete" />
 
     <TextView
         android:id="@+id/tv_button_play"
         android:layout_width="270dp"
         android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/button_play"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_rectangle_play_shape"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="PLAY NOW"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_button_red"
         app:layout_constraintStart_toStartOf="@+id/tv_button_black"
-        app:layout_constraintTop_toBottomOf="@+id/tv_button_red" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_button_red"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
