@@ -131,7 +131,7 @@
             app:np_textColor="#66FFFFFF"
             app:np_selectedTextSize="22sp"
             app:np_textSize="21sp"
-            app:np_wheelItemCount="5" />
+            app:np_wheelItemCount="3" />
 
         <ImageView
             android:id="@+id/ivRight"
