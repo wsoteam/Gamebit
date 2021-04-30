@@ -1,4 +1,4 @@
-package com.dat.android.gamebit.presentation.views
+package com.dat.android.gamebit.views
 
 import androidx.appcompat.app.AppCompatActivity
 import com.dat.android.gamebit.R
