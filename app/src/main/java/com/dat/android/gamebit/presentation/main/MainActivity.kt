@@ -1,15 +1,13 @@
-package com.dat.android.gamebit.presentation.game
+package com.dat.android.gamebit.presentation.main
 
-import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
-import com.shawnlin.numberpicker.NumberPicker
+import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
+import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogDefeat
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.String
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -17,14 +15,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         updateUI()
-
-        var anim = ValueAnimator.ofFloat(0f, 5000f)
-        anim.duration = 5_000L
-        anim.addUpdateListener {
-            ivRoulete.rotation = it.animatedValue.toString().toFloat()
-        }
-        anim.start()
         bindSpinners()
+
+        iv_show_highscoresActivity.setOnClickListener {
+            var intentHigh = Intent(this@MainActivity, HighscoresActivity::class.java)
+            startActivity(intentHigh)
+        }
+
+        tv_button_play.setOnClickListener {
+            var dialogDefeat = FragmentDialogDefeat()
+            dialogDefeat.show(supportFragmentManager, "customDialog")
+        }
+
+
     }
 
     private fun bindSpinners() {

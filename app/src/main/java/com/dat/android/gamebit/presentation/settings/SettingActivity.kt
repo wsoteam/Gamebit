@@ -1,13 +1,12 @@
-package com.dat.android.gamebit.presentation.game
+package com.dat.android.gamebit.presentation.settings
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
+import com.dat.android.gamebit.presentation.menu.MenuActivity
 import kotlinx.android.synthetic.main.activity_setting.*
-import kotlinx.android.synthetic.main.activity_setting.view.*
 
 class SettingActivity : AppCompatActivity(R.layout.activity_setting) {
 

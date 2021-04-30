@@ -1,10 +1,13 @@
-package com.dat.android.gamebit.presentation.game
+package com.dat.android.gamebit.presentation.menu
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
+import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
+import com.dat.android.gamebit.presentation.main.MainActivity
+import com.dat.android.gamebit.presentation.settings.SettingActivity
 import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuActivity : AppCompatActivity(R.layout.activity_menu) {

@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <androidx.cardview.widget.CardView
@@ -29,29 +30,48 @@
                 android:textStyle="bold"
                 android:textSize="30sp"
                 android:textColor="#ffffff"
-                android:text="Defeat!" />
+                android:text="New highscore!" />
 
             <TextView
+                android:id="@+id/tvMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="3dp"
+                android:textStyle="normal"
+                android:textSize="27sp"
+                android:textColor="#ffffff"
+                android:text="$10 410"
+                />
+
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="353dp"
+                android:layout_height="54dp"
+                android:background="@drawable/img_back_edt_win"
                 android:layout_marginTop="27dp"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/poppinsmed"
                 android:textStyle="normal"
-                android:textSize="27sp"
-                android:textColor="#ffffff"
-                android:text="Better luck next time!" />
+                android:textSize="18sp"
+                android:hint="Enter your name"
+                tools:text="test"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:textColorHint="#dcdcdc"/>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="35dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="29dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/btnRetry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -60,10 +80,9 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:textColor="#ffffff"
-                    android:text="RETRY" />
+                    android:text="continue" />
 
                 <Button
-                    android:id="@+id/btnQuit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"

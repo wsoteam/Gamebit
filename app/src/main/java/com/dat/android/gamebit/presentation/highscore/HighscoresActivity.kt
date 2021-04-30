@@ -1,13 +1,12 @@
-package com.dat.android.gamebit.presentation.game
+package com.dat.android.gamebit.presentation.highscore
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
+import com.dat.android.gamebit.presentation.menu.MenuActivity
 import kotlinx.android.synthetic.main.activity_highscores.*
-import kotlinx.android.synthetic.main.activity_menu.*
-import kotlinx.android.synthetic.main.activity_setting.*
 
 class HighscoresActivity : AppCompatActivity(R.layout.activity_highscores) {
     override fun onCreate(savedInstanceState: Bundle?) {
