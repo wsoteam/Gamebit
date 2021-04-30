@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/GameBit.iml" filepath="$PROJECT_DIR$/.idea/modules/GameBit.iml" group="GameBit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GameBit-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GameBit-app.iml" group="GameBit/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gamebit-GameBit.iml" filepath="$PROJECT_DIR$/.idea/modules/Gamebit-GameBit.iml" group="GameBit" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="GameBit/app" />
     </modules>
   </component>
