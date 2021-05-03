@@ -1,5 +1,6 @@
 package com.dat.android.gamebit.presentation.main
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,13 @@ import com.dat.android.gamebit.R
 import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogDefeat
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
+    var hash = hashMapOf<Int, Float>( Pair(34, 5f), )
+    var redList = arrayListOf(34, 27, )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +32,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             var dialogDefeat = FragmentDialogDefeat()
             dialogDefeat.show(supportFragmentManager, "customDialog")
         }
+
+        var animator = ValueAnimator.ofFloat(0f, 360f)
+        animator.addUpdateListener {
+            ivRoulete.rotation = it.animatedValue.toString().toFloat()
+        }
+        animator.start()
+
+        var value = Random.nextInt(5, 10)
+        var amountRotations = value * 360f
 
 
     }
