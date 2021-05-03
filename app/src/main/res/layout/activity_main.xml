@@ -31,6 +31,7 @@
         android:layout_width="290dp"
         android:layout_height="290dp"
         android:layout_marginStart="40dp"
+        android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

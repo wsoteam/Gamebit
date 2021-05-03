@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             startActivity(intentHigh)
         }
 
-        tv_button_play.setOnClickListener {
+        /*tv_button_play.setOnClickListener {
             var dialogDefeat = FragmentDialogDefeat()
             dialogDefeat.show(supportFragmentManager, "customDialog")
-        }
+        }*/ // диалог
 
 
     }
