@@ -14,8 +14,18 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-   // var hash = hashMapOf<Int, Float>( Pair(34, 5f) )
-   // var redList = arrayListOf(34, 27 )
+   var hash = hashMapOf<Int, Float>( Pair(32, -1f), Pair(15, -20f), Pair(19, -30f), Pair(4, -40f), Pair(21, -50f),
+                                    Pair(2, -60f), Pair(25, -66f), Pair(17, -76f), Pair(34, -86f), Pair(6, -96f), Pair(27, -106f),
+                                    Pair(13, -114f), Pair(36, -124f), Pair(11, -134f), Pair(30, -144f), Pair(8, -154f), Pair(23, -161f),
+                                    Pair(10, -171f), Pair(5, -181f), Pair(24, -191f), Pair(16, -201f), Pair(33,-210f), Pair(1, -220f),
+                                    Pair(20, -230f), Pair(14, -237f), Pair(31, -247f), Pair(9, -257f), Pair(22, -267f), Pair(18, -277f),
+                                    Pair(29, -284f), Pair(7, -294f), Pair(28, -303f), Pair(12, -313f), Pair(35, -323f), Pair(3, -333f),
+                                    Pair(26, -341f), Pair(36, -351f))
+
+
+    var redList = arrayListOf(32, 19, 21, 25, 34, 27, 36, 30, 23, 5, 16, 1, 14, 9, 18, 7, 12, 3)
+
+    var blackList = arrayListOf(15, 4, 2, 17, 6, 13, 11, 8, 10, 24, 33, 20, 31, 22, 29, 28, 35, 26)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
