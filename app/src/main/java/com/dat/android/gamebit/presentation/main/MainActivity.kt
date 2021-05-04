@@ -7,13 +7,16 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dat.android.gamebit.Config
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
 import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
+import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogDefeat
+import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogWin
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDefeat.Callbacks {
 
 
     var hash = hashMapOf<Int, Float>(
@@ -81,29 +84,40 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     var userValue = -1
     var userColor = -1
 
+    var userBet = -1
+
+
+    val minHighScore = 5000
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         updateUI()
         bindSpinners()
         bindSpinnersNumbers()
+
         iv_show_highscoresActivity.setOnClickListener {
             var intentHigh = Intent(this@MainActivity, HighscoresActivity::class.java)
             startActivity(intentHigh)
         }
 
-
         tv_button_play.setOnClickListener {
+            tv_button_play.isEnabled = false
             rullAnimation()
         }
+    }
 
-
-        /*tv_button_play.setOnClickListener {
+    private fun stateBalanceNull() {
+        if (Config.amountOfMoney == 0 ) {
             var dialogDefeat = FragmentDialogDefeat()
             dialogDefeat.show(supportFragmentManager, "customDialog")
-        }*/ // диалог
-
-
+        }
+    }
+    private fun stateBalanceWin() {
+        if (Config.amountOfMoney >= minHighScore) {
+            var dialogWin = FragmentDialogWin()
+            dialogWin.show(supportFragmentManager, "customDialog")
+        }
     }
 
     private fun rullAnimation() {
@@ -118,6 +132,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         userValue = num[npNumber.value - 1].toInt()
         userColor = getCurrentColor(userValue)
 
+        userBet = data[npBet.value - 1].split("$")[1].toInt()
 
         var animator = ValueAnimator.ofFloat(0f, fullDegree)
         animator.duration = 5_000L
@@ -133,6 +148,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             override fun onAnimationEnd(p0: Animator?) {
                 animator.removeAllListeners()
                 makeResults()
+                stateBalanceNull()
+                stateBalanceWin()
             }
 
             override fun onAnimationCancel(p0: Animator?) {
@@ -146,26 +163,45 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     }
 
+
+    override fun replay() {
+            ///////
+    }
+
     private fun makeResults() {
+
         if (userValue == 0) {
-            if (currentRouletValue == userValue){
-                Toast.makeText(this, "X5", Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(this, "lost bet", Toast.LENGTH_LONG).show()
+            if (currentRouletValue == userValue) {
+                //Toast.makeText(this, "X5", Toast.LENGTH_LONG).show()
+                Config.amountOfMoney += userBet * 5
+                tv_you_sum.text = "$" + Config.amountOfMoney
+
+            } else {
+                //Toast.makeText(this, "lost bet", Toast.LENGTH_LONG).show()
+                Config.amountOfMoney -= userBet
+                tv_you_sum.text = "$" + Config.amountOfMoney
+
             }
         } else {
             when {
                 currentRouletValue == userValue -> {
-                    Toast.makeText(this, "X3", Toast.LENGTH_LONG).show()
+                    // Toast.makeText(this, "X3", Toast.LENGTH_LONG).show()
+                    Config.amountOfMoney += userBet * 3
+                    tv_you_sum.text = "$" + Config.amountOfMoney
                 }
                 currentRouletColor == userColor -> {
-                    Toast.makeText(this, "X2", Toast.LENGTH_LONG).show()
+                    // Toast.makeText(this, "X2", Toast.LENGTH_LONG).show()
+                    Config.amountOfMoney += userBet * 1
+                    tv_you_sum.text = "$" + Config.amountOfMoney
                 }
                 else -> {
-                    Toast.makeText(this, "lost bet", Toast.LENGTH_LONG).show()
+                    // Toast.makeText(this, "lost bet", Toast.LENGTH_LONG).show()
+                    Config.amountOfMoney -= userBet
+                    tv_you_sum.text = "$" + Config.amountOfMoney
                 }
             }
         }
+        tv_button_play.isEnabled = true
     }
 
     private fun getCurrentColor(value: Int): Int {
@@ -191,7 +227,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         /// "kek,lol,kek,kek" -- split --> array("kek", "lol", "kek", "kek") --> array[1] == "lol"
         /// "$50" -- split("$") --- array( "", "50") --- array[1].toInt
 
-        var value = data[0].split("$")[1].toInt()
+        var valueBet = data[0].split("$")[1].toInt()
+
+        npBet.setOnValueChangedListener { _, _, newVal ->
+
+            if (data[newVal - 1].split("$")[1].toInt() <=  Config.amountOfMoney) {
+                tv_button_play.isEnabled = true
+            } else {
+                tv_button_play.isEnabled = false
+                Toast.makeText(this, "Please bet less!", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun bindSpinnersNumbers() {
@@ -202,7 +248,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         npNumber.setOnValueChangedListener { _, _, newVal ->
             Log.e("LOL", "$newVal")
-            when(getCurrentColor(num[newVal - 1].toInt())){
+            when (getCurrentColor(num[newVal - 1].toInt())) {
                 RED -> {
                     tv_button_red.isSelected = true
                     tv_button_black.isSelected = false
@@ -220,8 +266,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
 
-
-
     private fun updateUI() {
         var backState = PreferenceProvider.getBackgroundStateSetting()
         when (backState) {
@@ -235,6 +279,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 iv_background_game.setImageResource(R.drawable.gradient_splash_red)
             }
         }
+
         tv_button_red.isSelected = true
+        tv_you_sum.text = "$" + Config.amountOfMoney
     }
 }

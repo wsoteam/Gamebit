@@ -18,26 +18,26 @@ class MenuActivity : AppCompatActivity(R.layout.activity_menu) {
 
 
         tv_button_play_from_menu.setOnClickListener {
-            var intentGame = Intent (this@MenuActivity, MainActivity::class.java)
+            var intentGame = Intent(this@MenuActivity, MainActivity::class.java)
             startActivity(intentGame)
-            finish()
         }
 
         tv_button_settings_from_menu.setOnClickListener {
-            var intentSetting = Intent (this@MenuActivity, SettingActivity::class.java)
+            var intentSetting = Intent(this@MenuActivity, SettingActivity::class.java)
             startActivity(intentSetting)
             finish()
         }
 
         tv_button_highscores_from_menu.setOnClickListener {
-            var intentHighscores = Intent (this@MenuActivity, HighscoresActivity::class.java)
+            var intentHighscores = Intent(this@MenuActivity, HighscoresActivity::class.java)
             startActivity(intentHighscores)
             finish()
         }
     }
+
     private fun updateUI() {
         var backState = PreferenceProvider.getBackgroundStateSetting()
-        when(backState){
+        when (backState) {
             PreferenceProvider.BACKGROUND_BLUE -> {
                 iv_background_menu.setImageResource(R.drawable.gradient_splash_blue)
             }
