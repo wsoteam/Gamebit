@@ -19,9 +19,10 @@ class FragmentDialogDefeat : DialogFragment() {
 
     interface Callbacks{
         fun replay()
+        fun exit()
     }
 
-    companion object{
+    /*companion object{
 
         private const val DATA_KEY = "DATA_KEY"
 
@@ -33,7 +34,7 @@ class FragmentDialogDefeat : DialogFragment() {
             fragment.arguments = bundle
             return fragment
         }
-    }
+    }*/
 
 
     override fun onCreateView(
@@ -57,9 +58,14 @@ class FragmentDialogDefeat : DialogFragment() {
             (activity as Callbacks).replay()
             dismiss()
         }
+        btnQuit.setOnClickListener {
+            (activity as Callbacks).exit()
+            dismiss()
+        }
 
-        var data = arguments!!.getString(DATA_KEY)
-        Log.e("LOL", "data -- $data")
+
+        //var data = arguments!!.getString(DATA_KEY)
+        //Log.e("LOL", "data -- $data")
 
     }
 

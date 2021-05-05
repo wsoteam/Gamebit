@@ -14,13 +14,15 @@ import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogDefeat
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogWin
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.concurrent.fixedRateTimer
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDefeat.Callbacks {
 
 
     var hash = hashMapOf<Int, Float>(
-        Pair(32, -1f),
+        Pair(32, -10f),
+        Pair(0, 0f),
         Pair(15, -20f),
         Pair(19, -30f),
         Pair(4, -40f),
@@ -86,6 +88,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
 
     var userBet = -1
 
+    var amountOfMoney = 4000
 
     val minHighScore = 5000
 
@@ -108,13 +111,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
     }
 
     private fun stateBalanceNull() {
-        if (Config.amountOfMoney == 0 ) {
+        if (amountOfMoney == 0 ) {
             var dialogDefeat = FragmentDialogDefeat()
             dialogDefeat.show(supportFragmentManager, "customDialog")
         }
     }
     private fun stateBalanceWin() {
-        if (Config.amountOfMoney >= minHighScore) {
+        if (amountOfMoney >= minHighScore) {
             var dialogWin = FragmentDialogWin()
             dialogWin.show(supportFragmentManager, "customDialog")
         }
@@ -124,6 +127,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
         var amountFullRotation = Random.nextInt(6, 10)
 
         currentRouletValue = Random.nextInt(0, 37)
+        //currentRouletValue = 0
         currentRouletColor = getCurrentColor(currentRouletValue)
 
         var roulleteValueDegree = hash[currentRouletValue]
@@ -165,7 +169,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
 
 
     override fun replay() {
-            ///////
+    }
+
+    override fun exit() {
+        finish()
+
     }
 
     private fun makeResults() {
@@ -173,35 +181,41 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
         if (userValue == 0) {
             if (currentRouletValue == userValue) {
                 //Toast.makeText(this, "X5", Toast.LENGTH_LONG).show()
-                Config.amountOfMoney += userBet * 5
-                tv_you_sum.text = "$" + Config.amountOfMoney
+                amountOfMoney += userBet * 5
+                tv_you_sum.text = "$" + amountOfMoney
 
             } else {
                 //Toast.makeText(this, "lost bet", Toast.LENGTH_LONG).show()
-                Config.amountOfMoney -= userBet
-                tv_you_sum.text = "$" + Config.amountOfMoney
+                amountOfMoney -= userBet
+                tv_you_sum.text = "$" + amountOfMoney
 
             }
         } else {
             when {
                 currentRouletValue == userValue -> {
                     // Toast.makeText(this, "X3", Toast.LENGTH_LONG).show()
-                    Config.amountOfMoney += userBet * 3
-                    tv_you_sum.text = "$" + Config.amountOfMoney
+                    amountOfMoney += userBet * 3
+                    tv_you_sum.text = "$" + amountOfMoney
                 }
                 currentRouletColor == userColor -> {
                     // Toast.makeText(this, "X2", Toast.LENGTH_LONG).show()
-                    Config.amountOfMoney += userBet * 1
-                    tv_you_sum.text = "$" + Config.amountOfMoney
+                    //
+                    showValues()
+                    amountOfMoney += userBet * 1
+                    tv_you_sum.text = "$" + amountOfMoney
                 }
                 else -> {
                     // Toast.makeText(this, "lost bet", Toast.LENGTH_LONG).show()
-                    Config.amountOfMoney -= userBet
-                    tv_you_sum.text = "$" + Config.amountOfMoney
+                    amountOfMoney -= userBet
+                    tv_you_sum.text = "$" + amountOfMoney
                 }
             }
         }
         tv_button_play.isEnabled = true
+    }
+
+    private fun showValues() {
+        Log.e("LOL", "rol color -- $currentRouletColor, user color -- $userColor, rol value -- $currentRouletValue, user value -- $userValue, user bet -- $userBet")
     }
 
     private fun getCurrentColor(value: Int): Int {
@@ -231,7 +245,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
 
         npBet.setOnValueChangedListener { _, _, newVal ->
 
-            if (data[newVal - 1].split("$")[1].toInt() <=  Config.amountOfMoney) {
+            if (data[newVal - 1].split("$")[1].toInt() <=  amountOfMoney) {
                 tv_button_play.isEnabled = true
             } else {
                 tv_button_play.isEnabled = false
@@ -281,6 +295,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
         }
 
         tv_button_red.isSelected = true
-        tv_you_sum.text = "$" + Config.amountOfMoney
+        tv_you_sum.text = "$" + amountOfMoney
     }
 }
