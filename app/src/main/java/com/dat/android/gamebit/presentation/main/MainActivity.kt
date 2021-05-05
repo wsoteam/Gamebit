@@ -5,8 +5,10 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import com.dat.android.gamebit.Config
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
@@ -14,10 +16,9 @@ import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogDefeat
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogWin
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.concurrent.fixedRateTimer
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDefeat.Callbacks {
+class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDefeat.Callbacks, FragmentDialogWin.Callbacks {
 
 
     var hash = hashMapOf<Int, Float>(
@@ -108,6 +109,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
             tv_button_play.isEnabled = false
             rullAnimation()
         }
+
+
     }
 
     private fun stateBalanceNull() {
@@ -118,16 +121,24 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
     }
     private fun stateBalanceWin() {
         if (amountOfMoney >= minHighScore) {
-            var dialogWin = FragmentDialogWin()
-            dialogWin.show(supportFragmentManager, "customDialog")
+            if (iv_show_highscoresActivity.visibility != View.VISIBLE) {
+                var dialogWin = FragmentDialogWin()
+
+                var bundle = Bundle()
+                bundle.putInt(Config.TAG_USER_SCORE, amountOfMoney)
+                dialogWin.arguments = bundle
+
+                dialogWin.show(supportFragmentManager, "customDialogg")
+            }
+            // save new highScore
         }
     }
 
     private fun rullAnimation() {
         var amountFullRotation = Random.nextInt(6, 10)
 
-        currentRouletValue = Random.nextInt(0, 37)
-        //currentRouletValue = 0
+        //currentRouletValue = Random.nextInt(0, 37)
+        currentRouletValue = 30
         currentRouletColor = getCurrentColor(currentRouletValue)
 
         var roulleteValueDegree = hash[currentRouletValue]
@@ -169,11 +180,21 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
 
 
     override fun replay() {
+        finish()
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun exit() {
         finish()
+    }
 
+    override fun endGame() {
+        finish()
+    }
+
+    override fun continuePlay() {
+        iv_show_highscoresActivity.visibility = View.VISIBLE
     }
 
     private fun makeResults() {
@@ -199,8 +220,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
                 }
                 currentRouletColor == userColor -> {
                     // Toast.makeText(this, "X2", Toast.LENGTH_LONG).show()
-                    //
-                    showValues()
                     amountOfMoney += userBet * 1
                     tv_you_sum.text = "$" + amountOfMoney
                 }

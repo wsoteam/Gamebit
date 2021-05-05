@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
+import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogWin
 import com.dat.android.gamebit.presentation.menu.MenuActivity
 import kotlinx.android.synthetic.main.activity_highscores.*
 
@@ -15,9 +16,7 @@ class HighscoresActivity : AppCompatActivity(R.layout.activity_highscores) {
 
 
         iv_back_menu_from_highscores.setOnClickListener {
-            var intentMenu = Intent (this@HighscoresActivity, MenuActivity::class.java)
-            startActivity(intentMenu)
-            finish()
+            onBackPressed()
         }
     }
 
@@ -50,4 +49,5 @@ class HighscoresActivity : AppCompatActivity(R.layout.activity_highscores) {
         fl_highscores_color_line_1.setBackgroundResource(R.drawable.ic_line_setting_blue)
         fl_highscores_color_line_2.setBackgroundResource(R.drawable.ic_line_setting_blue)
     }
+
 }

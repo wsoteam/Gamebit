@@ -25,13 +25,11 @@ class MenuActivity : AppCompatActivity(R.layout.activity_menu) {
         tv_button_settings_from_menu.setOnClickListener {
             var intentSetting = Intent(this@MenuActivity, SettingActivity::class.java)
             startActivity(intentSetting)
-            finish()
         }
 
         tv_button_highscores_from_menu.setOnClickListener {
             var intentHighscores = Intent(this@MenuActivity, HighscoresActivity::class.java)
             startActivity(intentHighscores)
-            finish()
         }
     }
 

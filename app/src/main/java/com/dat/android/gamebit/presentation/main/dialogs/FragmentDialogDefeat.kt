@@ -22,21 +22,6 @@ class FragmentDialogDefeat : DialogFragment() {
         fun exit()
     }
 
-    /*companion object{
-
-        private const val DATA_KEY = "DATA_KEY"
-
-        fun newInstance(data : String) : FragmentDialogDefeat{
-            var bundle = Bundle()
-            bundle.putString(DATA_KEY, data)
-
-            var fragment = FragmentDialogDefeat()
-            fragment.arguments = bundle
-            return fragment
-        }
-    }*/
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,7 +36,6 @@ class FragmentDialogDefeat : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         updateUI()
-        // btn replay and exit
 
         btnRetry.setOnClickListener {
             //(activity as MainActivity).replay()
@@ -62,11 +46,6 @@ class FragmentDialogDefeat : DialogFragment() {
             (activity as Callbacks).exit()
             dismiss()
         }
-
-
-        //var data = arguments!!.getString(DATA_KEY)
-        //Log.e("LOL", "data -- $data")
-
     }
 
     private fun updateUI() {
