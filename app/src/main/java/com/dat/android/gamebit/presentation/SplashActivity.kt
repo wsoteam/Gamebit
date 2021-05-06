@@ -18,6 +18,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         span.setSpan(ForegroundColorSpan(resources.getColor(R.color.end_splash_title)), 4, span.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         tvTitle.text = span
+
         intent = Intent(this@SplashActivity, MenuActivity::class.java)
         startActivity(intent)
     }

@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
 
     var userBet = -1
 
-    var amountOfMoney = 4000
+    var amountOfMoney = 3000
 
     var isShowedWinDialog = false
 

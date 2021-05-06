@@ -51,7 +51,7 @@ object PreferenceProvider {
 
 
     private val USER_SCORE_KEY = "USER_SCORE_KEY"
-    val DEFAULT_USER_SCORE = 3000
+    val DEFAULT_USER_SCORE = 5000
 
 
     fun saveUserScore(score: Int) {
