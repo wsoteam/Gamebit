@@ -21,6 +21,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
         intent = Intent(this@SplashActivity, MenuActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun startAnim() {

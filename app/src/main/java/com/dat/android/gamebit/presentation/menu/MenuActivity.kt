@@ -1,10 +1,12 @@
 package com.dat.android.gamebit.presentation.menu
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
+import com.dat.android.gamebit.SoundManager
 import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
 import com.dat.android.gamebit.presentation.main.MainActivity
 import com.dat.android.gamebit.presentation.settings.SettingActivity
@@ -14,8 +16,6 @@ class MenuActivity : AppCompatActivity(R.layout.activity_menu) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         updateUI()
-
-
 
         tv_button_play_from_menu.setOnClickListener {
             var intentGame = Intent(this@MenuActivity, MainActivity::class.java)
@@ -31,6 +31,7 @@ class MenuActivity : AppCompatActivity(R.layout.activity_menu) {
             var intentHighscores = Intent(this@MenuActivity, HighscoresActivity::class.java)
             startActivity(intentHighscores)
         }
+        SoundManager.start()
     }
 
     private fun updateUI() {
@@ -47,4 +48,8 @@ class MenuActivity : AppCompatActivity(R.layout.activity_menu) {
             }
         }
     }
+
+
+
+
 }

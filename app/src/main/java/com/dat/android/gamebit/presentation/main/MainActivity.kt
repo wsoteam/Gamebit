@@ -3,6 +3,7 @@ package com.dat.android.gamebit.presentation.main
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,13 +13,15 @@ import androidx.core.os.bundleOf
 import com.dat.android.gamebit.Config
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
+import com.dat.android.gamebit.SoundManager
 import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogDefeat
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogWin
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDefeat.Callbacks, FragmentDialogWin.Callbacks {
+class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDefeat.Callbacks,
+    FragmentDialogWin.Callbacks {
 
 
     var hash = hashMapOf<Int, Float>(
@@ -108,19 +111,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
             tv_button_play.isEnabled = false
             rullAnimation()
         }
-
-
     }
 
+
     private fun stateBalanceNull() {
-        if (amountOfMoney == 0 ) {
+        if (amountOfMoney == 0) {
             var dialogDefeat = FragmentDialogDefeat()
             dialogDefeat.show(supportFragmentManager, "customDialog")
         }
     }
+
     private fun stateBalanceWin() {
         if (amountOfMoney >= PreferenceProvider.getUserScore()) {
-            if (!isShowedWinDialog){
+            if (!isShowedWinDialog) {
                 var dialogWin = FragmentDialogWin()
 
                 var bundle = Bundle()
@@ -235,7 +238,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
     }
 
     private fun showValues() {
-        Log.e("LOL", "rol color -- $currentRouletColor, user color -- $userColor, rol value -- $currentRouletValue, user value -- $userValue, user bet -- $userBet")
+        Log.e(
+            "LOL",
+            "rol color -- $currentRouletColor, user color -- $userColor, rol value -- $currentRouletValue, user value -- $userValue, user bet -- $userBet"
+        )
     }
 
     private fun getCurrentColor(value: Int): Int {
@@ -265,7 +271,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
 
         npBet.setOnValueChangedListener { _, _, newVal ->
 
-            if (data[newVal - 1].split("$")[1].toInt() <=  amountOfMoney) {
+            if (data[newVal - 1].split("$")[1].toInt() <= amountOfMoney) {
                 tv_button_play.isEnabled = true
             } else {
                 tv_button_play.isEnabled = false
@@ -317,4 +323,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
         tv_button_red.isSelected = true
         tv_you_sum.text = "$" + amountOfMoney
     }
+
+
 }

@@ -68,4 +68,23 @@ object PreferenceProvider {
         return score
     }
 
+    private val SOUND_KEY = "SOUND_KEY"
+    const val SOUND_1 = 0
+    const val SOUND_2 = 1
+    const val SOUND_3 = 2
+
+    fun saveSoundStateSetting(sound: Int) {
+        editor.putInt(
+            SOUND_KEY, sound
+        )
+        editor.commit()
+    }
+
+    fun getSoundStateSetting(): Int {
+        val savedStateSound = sp.getInt(
+            SOUND_KEY, SOUND_1
+        )!!
+        return savedStateSound
+    }
+
 }
