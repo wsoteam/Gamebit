@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
 
     var amountOfMoney = 4000
 
-    val minHighScore = 5000
+    var isShowedWinDialog = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,9 +100,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
         bindSpinners()
         bindSpinnersNumbers()
 
-        iv_show_highscoresActivity.setOnClickListener {
-            var intentHigh = Intent(this@MainActivity, HighscoresActivity::class.java)
-            startActivity(intentHigh)
+        iv_back_menu_from_game.setOnClickListener {
+            onBackPressed()
         }
 
         tv_button_play.setOnClickListener {
@@ -120,8 +119,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
         }
     }
     private fun stateBalanceWin() {
-        if (amountOfMoney >= minHighScore) {
-            if (iv_show_highscoresActivity.visibility != View.VISIBLE) {
+        if (amountOfMoney >= PreferenceProvider.getUserScore()) {
+            if (!isShowedWinDialog){
                 var dialogWin = FragmentDialogWin()
 
                 var bundle = Bundle()
@@ -129,8 +128,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
                 dialogWin.arguments = bundle
 
                 dialogWin.show(supportFragmentManager, "customDialogg")
+                isShowedWinDialog = true
             }
-            // save new highScore
+
+            PreferenceProvider.saveUserScore(amountOfMoney)
         }
     }
 
@@ -194,7 +195,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
     }
 
     override fun continuePlay() {
-        iv_show_highscoresActivity.visibility = View.VISIBLE
+
     }
 
     private fun makeResults() {

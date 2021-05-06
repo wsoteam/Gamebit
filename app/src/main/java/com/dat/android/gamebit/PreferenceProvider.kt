@@ -22,11 +22,50 @@ object PreferenceProvider {
         )
         editor.commit()
     }
+
     fun getBackgroundStateSetting(): Int {
         val savedStateBackground = sp.getInt(
             BACKGROUND_KEY, BACKGROUND_GREEN
         )!!
         return savedStateBackground
+    }
+
+
+    private val USER_NAME_KEY = "USER_NAME_KEY"
+    val DEFAULT_USER_NAME = "Unknown user"
+
+
+    fun saveUserName(name: String) {
+        editor.putString(
+            USER_NAME_KEY, name
+        )
+        editor.commit()
+    }
+
+    fun getUserName(): String {
+        val name = sp.getString(
+            USER_NAME_KEY, DEFAULT_USER_NAME
+        )!!
+        return name
+    }
+
+
+    private val USER_SCORE_KEY = "USER_SCORE_KEY"
+    val DEFAULT_USER_SCORE = 3000
+
+
+    fun saveUserScore(score: Int) {
+        editor.putInt(
+            USER_SCORE_KEY, score
+        )
+        editor.commit()
+    }
+
+    fun getUserScore(): Int {
+        val score = sp.getInt(
+            USER_SCORE_KEY, DEFAULT_USER_SCORE
+        )!!
+        return score
     }
 
 }

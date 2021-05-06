@@ -2,7 +2,6 @@ package com.dat.android.gamebit.presentation.main.dialogs
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.fragment.app.DialogFragment
 import com.dat.android.gamebit.Config
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
-import kotlinx.android.synthetic.main.dialog_defeat.*
 import kotlinx.android.synthetic.main.fragment_dialog_win.*
 import kotlinx.android.synthetic.main.fragment_dialog_win.llBackground
 
@@ -37,7 +35,7 @@ class FragmentDialogWin : DialogFragment() {
         updateUI()
 
         btn_quit.setOnClickListener {
-            saveUserScore()
+            saveUserName()
             (activity as Callbacks).endGame()
             dismiss()
         }
@@ -45,16 +43,19 @@ class FragmentDialogWin : DialogFragment() {
         tvMoney.text = "$" + amount
 
         btn_continue.setOnClickListener {
-            saveUserScore()
+            saveUserName()
             (activity as Callbacks).continuePlay()
             dismiss()
         }
 
-        //tvMoney edtName btn_continue
+        // edtName
     }
 
-    private fun saveUserScore() {
-
+    private fun saveUserName() {
+        var name = edtName.text.toString()
+        if (name != "" && name != " ") {
+            PreferenceProvider.saveUserName(name)
+        }
     }
 
     private fun updateUI() {

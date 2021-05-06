@@ -3,6 +3,7 @@ package com.dat.android.gamebit.presentation.highscore
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.dat.android.gamebit.PreferenceProvider
 import com.dat.android.gamebit.R
 import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogWin
@@ -14,9 +15,21 @@ class HighscoresActivity : AppCompatActivity(R.layout.activity_highscores) {
         super.onCreate(savedInstanceState)
         updateUI()
 
-
         iv_back_menu_from_highscores.setOnClickListener {
             onBackPressed()
+        }
+
+        fillUserScore()
+    }
+
+    private fun fillUserScore() {
+        var name = PreferenceProvider.getUserName()
+        var userScore = PreferenceProvider.getUserScore()
+
+        if (userScore != PreferenceProvider.DEFAULT_USER_SCORE){
+            Log.e("LOL", name)
+            tv_highscores_line_1_name.text = name
+            tv_highscores_line_1_result.text = userScore.toString()
         }
     }
 

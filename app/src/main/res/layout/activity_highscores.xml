@@ -237,7 +237,7 @@
                 android:textStyle="normal"
                 android:textSize="26sp"
                 android:textColor="#ffffff"
-                android:text="14103" />
+                android:text="3100" />
         </FrameLayout>
 
     </LinearLayout>
