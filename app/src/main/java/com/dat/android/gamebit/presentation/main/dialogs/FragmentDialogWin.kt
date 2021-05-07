@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.dat.android.gamebit.Config
-import com.dat.android.gamebit.PreferenceProvider
+import com.dat.android.gamebit.utils.PreferenceProvider
 import com.dat.android.gamebit.R
 import kotlinx.android.synthetic.main.fragment_dialog_win.*
 import kotlinx.android.synthetic.main.fragment_dialog_win.llBackground

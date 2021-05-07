@@ -1,18 +1,13 @@
 package com.dat.android.gamebit.presentation.main.dialogs
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import com.dat.android.gamebit.PreferenceProvider
+import com.dat.android.gamebit.utils.PreferenceProvider
 import com.dat.android.gamebit.R
-import com.dat.android.gamebit.presentation.main.MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_defeat.*
 
 class FragmentDialogDefeat : DialogFragment() {

@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">GameBit</string>
     <string name="splash_title">Gamebit</string>
+
+    <string name="name_high1">Mike</string>
+    <string name="name_high2">Alex11</string>
+    <string name="name_high3">IHolly)</string>
+    <string name="name_high4">Unknown user</string>
+    <string name="name_high5">Thomas</string>
+
+    <string name="result_name_high1">5000</string>
+    <string name="result_name_high2">5000</string>
+    <string name="result_name_high3">4950</string>
+    <string name="result_name_high4">4900</string>
+    <string name="result_name_high5">4750</string>
 </resources>

@@ -1,12 +1,11 @@
 package com.dat.android.gamebit.presentation.menu
 
 import android.content.Intent
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dat.android.gamebit.PreferenceProvider
+import com.dat.android.gamebit.utils.PreferenceProvider
 import com.dat.android.gamebit.R
-import com.dat.android.gamebit.SoundManager
+import com.dat.android.gamebit.sound.SoundManager
 import com.dat.android.gamebit.presentation.highscore.HighscoresActivity
 import com.dat.android.gamebit.presentation.main.MainActivity
 import com.dat.android.gamebit.presentation.settings.SettingActivity

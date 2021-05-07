@@ -1,13 +1,10 @@
 package com.dat.android.gamebit.presentation.settings
 
-import android.content.Intent
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dat.android.gamebit.PreferenceProvider
+import com.dat.android.gamebit.utils.PreferenceProvider
 import com.dat.android.gamebit.R
-import com.dat.android.gamebit.SoundManager
-import com.dat.android.gamebit.presentation.menu.MenuActivity
+import com.dat.android.gamebit.sound.SoundManager
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : AppCompatActivity(R.layout.activity_setting) {

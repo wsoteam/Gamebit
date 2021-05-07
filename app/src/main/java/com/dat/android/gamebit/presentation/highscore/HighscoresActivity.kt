@@ -1,14 +1,10 @@
 package com.dat.android.gamebit.presentation.highscore
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.dat.android.gamebit.PreferenceProvider
+import com.dat.android.gamebit.utils.PreferenceProvider
 import com.dat.android.gamebit.R
-import com.dat.android.gamebit.SoundManager
-import com.dat.android.gamebit.presentation.main.dialogs.FragmentDialogWin
-import com.dat.android.gamebit.presentation.menu.MenuActivity
 import kotlinx.android.synthetic.main.activity_highscores.*
 
 class HighscoresActivity : AppCompatActivity(R.layout.activity_highscores) {

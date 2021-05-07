@@ -10,13 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.highscore.HighscoresActivity"
+        <activity android:name=".presentation.black.BlackActivity"
             android:screenOrientation="landscape"
             android:theme="@style/SplashActivityStyle"></activity>
         <activity
+            android:name=".presentation.highscore.HighscoresActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/SplashActivityStyle" />
+        <activity
             android:name=".presentation.settings.SettingActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/SplashActivityStyle"></activity>
+            android:theme="@style/SplashActivityStyle" />
         <activity
             android:name=".presentation.menu.MenuActivity"
             android:screenOrientation="landscape"

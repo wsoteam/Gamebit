@@ -57,7 +57,7 @@
             android:textSize="26sp"
             android:textColor="#ffffff"
             android:gravity="center_horizontal"
-            android:text="gardio13" />
+            android:text="@string/name_high1" />
 
         <TextView
             android:id="@+id/tv_highscores_line_1_result"
@@ -69,7 +69,7 @@
             android:textStyle="normal"
             android:textSize="26sp"
             android:textColor="#ffffff"
-            android:text="14103" />
+            android:text="@string/result_name_high1" />
     </FrameLayout>
 
     <FrameLayout
@@ -100,7 +100,7 @@
         android:textSize="26sp"
         android:textColor="#ffffff"
         android:gravity="center_horizontal"
-        android:text="gardio13" />
+        android:text="@string/name_high2" />
 
     <TextView
         android:id="@+id/tv_highscores_line_2_result"
@@ -112,7 +112,7 @@
         android:textStyle="normal"
         android:textSize="26sp"
         android:textColor="#ffffff"
-        android:text="14103" />
+        android:text="@string/result_name_high2" />
 </FrameLayout>
 
         <FrameLayout
@@ -141,7 +141,7 @@
                 android:textSize="26sp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"
-                android:text="ololo_LOL12" />
+                android:text="@string/name_high3" />
 
             <TextView
                 android:id="@+id/tv_highscores_line_3_result"
@@ -153,7 +153,7 @@
                 android:textStyle="normal"
                 android:textSize="26sp"
                 android:textColor="#ffffff"
-                android:text="14103" />
+                android:text="@string/result_name_high3" />
         </FrameLayout>
 
         <FrameLayout
@@ -184,7 +184,7 @@
                 android:textSize="26sp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"
-                android:text="gardio13" />
+                android:text="@string/name_high4" />
 
             <TextView
                 android:id="@+id/tv_highscores_line_4_result"
@@ -196,7 +196,7 @@
                 android:textStyle="normal"
                 android:textSize="26sp"
                 android:textColor="#ffffff"
-                android:text="2545458" />
+                android:text="@string/result_name_high4" />
         </FrameLayout>
 
         <FrameLayout
@@ -225,7 +225,7 @@
                 android:textSize="26sp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"
-                android:text="gardio13" />
+                android:text="@string/name_high5" />
 
             <TextView
                 android:id="@+id/tv_highscores_line_5_result"
@@ -237,7 +237,7 @@
                 android:textStyle="normal"
                 android:textSize="26sp"
                 android:textColor="#ffffff"
-                android:text="3100" />
+                android:text="@string/result_name_high5" />
         </FrameLayout>
 
     </LinearLayout>
