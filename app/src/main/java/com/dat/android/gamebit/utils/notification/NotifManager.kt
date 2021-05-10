@@ -9,7 +9,7 @@ import java.util.*
 
 object NotifManager {
     private const val FOUR_HOURS = 14400000L
-    private const val TEST_DIFF = 10_000L
+    private const val TEST_DIFF = 20_000L
 
     fun setAlarm(context: Context?) {
         val intent = Intent(context, AlarmReceiver::class.java)
@@ -28,7 +28,7 @@ object NotifManager {
 
     private fun getFirstTime(): Long {
         var presentTime = Calendar.getInstance().timeInMillis
-        var premierTime = presentTime + FOUR_HOURS
+        var premierTime = presentTime + TEST_DIFF
         return premierTime
     }
 }

@@ -36,10 +36,10 @@ class AlarmReceiver : BroadcastReceiver() {
         val builder = Notification.Builder(context)
 
         var counter = PreferenceProvider.getNotificationCounter()
-        var title = context!!.resources.getStringArray(R.array.notifTitle)[counter]
-        var text = context!!.resources.getStringArray(R.array.notifText)[counter]
+        var title = context!!.resources.getStringArray(R.array.TitleNotification)[counter]
+        var text = context!!.resources.getStringArray(R.array.TextNotification)[counter]
 
-        var size = context!!.resources.getStringArray(R.array.notifTitle).size
+        var size = context!!.resources.getStringArray(R.array.TitleNotification).size
         if (counter >= size - 1) {
             counter = 0
         } else {
@@ -51,7 +51,7 @@ class AlarmReceiver : BroadcastReceiver() {
             .setContentText(text)
             .setAutoCancel(true)
             .setVibrate(VIBRATE_PATTERN)
-            .setSmallIcon(R.drawable.ic_lips_img)
+            .setSmallIcon(R.drawable.ic_letter)
             .setDefaults(Notification.DEFAULT_SOUND)
             .setSound(NOTIFICATION_SOUND_URI)
             .setContentIntent(pendingIntent)

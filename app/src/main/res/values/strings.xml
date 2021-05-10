@@ -13,4 +13,14 @@
     <string name="result_name_high3">4950</string>
     <string name="result_name_high4">4900</string>
     <string name="result_name_high5">4750</string>
+
+    <string-array name="TitleNotification">
+        <item></item>
+        <item></item>
+    </string-array>
+
+    <string-array name="TextNotification">
+        <item></item>
+        <item></item>
+    </string-array>
 </resources>

@@ -136,8 +136,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
     private fun rullAnimation() {
         var amountFullRotation = Random.nextInt(6, 10)
 
-        //currentRouletValue = Random.nextInt(0, 37)
-        currentRouletValue = 30
+        currentRouletValue = Random.nextInt(0, 37)
+        //currentRouletValue = 30
         currentRouletColor = getCurrentColor(currentRouletValue)
 
         var roulleteValueDegree = hash[currentRouletValue]
