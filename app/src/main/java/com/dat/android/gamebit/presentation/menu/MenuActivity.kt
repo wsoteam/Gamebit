@@ -30,7 +30,6 @@ class MenuActivity : AppCompatActivity(R.layout.activity_menu) {
             var intentHighscores = Intent(this@MenuActivity, HighscoresActivity::class.java)
             startActivity(intentHighscores)
         }
-        SoundManager.start()
     }
 
     private fun updateUI() {
