@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         vm.getStatusLD().observe(this, Observer {
             when (it) {
                 SplashVM.BLACK -> openBlack()
-                SplashVM.WHITE -> openWhite()
+                //SplashVM.WHITE -> openWhite()
             }
         })
     }
@@ -39,8 +39,8 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     }
 
     private fun startAnim() {
-        var anim = ValueAnimator.ofFloat(0f, 9000f)
-        anim.duration = 9_000L
+        var anim = ValueAnimator.ofFloat(0f, 30_000f)
+        anim.duration = 60_000L
         anim.addUpdateListener {
             iv_roulette_splash_giv.rotation = it.animatedValue.toString().toFloat()
         }
