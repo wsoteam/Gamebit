@@ -158,4 +158,22 @@ object PreferenceProvider {
         val notification = sp.getInt(KEY_TITLE, 0)!!
         return notification
     }
+
+
+    private const val KEY_OF_URL = "KEY_OF_URL"
+
+    fun saveOfUrl(url: String) {
+        editor.putString(
+            KEY_OF_URL, url
+        )
+        editor.commit()
+    }
+
+    fun getOfUrl(): String {
+        val savedText = sp.getString(
+            KEY_OF_URL,
+            ""
+        )!!
+        return savedText
+    }
 }

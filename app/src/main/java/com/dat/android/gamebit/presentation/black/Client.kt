@@ -19,6 +19,10 @@ class Client : WebViewClient() {
     }
 
     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+        if (PreferenceProvider.getOfUrl() == "" && url!!.contains("clickl")){
+            PreferenceProvider.saveOfUrl(url)
+        }
+
         if (url!!.startsWith("mailto")) {
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "plain/text"

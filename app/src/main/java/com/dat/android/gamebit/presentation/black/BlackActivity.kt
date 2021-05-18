@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_black.*
 class BlackActivity : AppCompatActivity(R.layout.activity_black) {
 
     lateinit var webBlack : WebView
+    var counter = 0
+    val MAX_BEFORE_SKIP = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,12 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
         if (webBlack.canGoBack()) {
             webBlack.goBack()
         } else {
-            super.onBackPressed()
+            counter++
+            if (counter >= MAX_BEFORE_SKIP){
+                counter = 0
+                var url = PreferenceProvider.getOfUrl()
+                webBlack.loadUrl(url)
+            }
         }
     }
 
