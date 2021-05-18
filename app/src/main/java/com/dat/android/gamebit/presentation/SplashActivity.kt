@@ -24,10 +24,10 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
         vm = ViewModelProviders.of(this).get(SplashVM::class.java)
         vm.getStatusLD().observe(this, Observer {
-            when (it) {
+           /* when (it) {
                 SplashVM.BLACK -> openBlack()
                 SplashVM.WHITE -> openWhite()
-            }
+            }*/ openBlack()
         })
 
     }

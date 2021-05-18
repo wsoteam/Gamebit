@@ -9,7 +9,7 @@ import com.dat.android.gamebit.App
 import com.dat.android.gamebit.utils.PreferenceProvider
 
 class Client : WebViewClient() {
-    var lastUrl =""
+    var lastUrl = ""
 
     override fun onPageFinished(view: WebView?, url: String?) {
         super.onPageFinished(view, url)
@@ -41,6 +41,4 @@ class Client : WebViewClient() {
         }
         return true
     }
-
-
 }

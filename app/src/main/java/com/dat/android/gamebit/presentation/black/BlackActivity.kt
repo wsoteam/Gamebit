@@ -1,20 +1,34 @@
 package com.dat.android.gamebit.presentation.black
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.webkit.ValueCallback
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.FrameLayout
-import com.dat.android.gamebit.utils.PreferenceProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.dat.android.gamebit.R
 import com.dat.android.gamebit.sound.SoundManager
+import com.dat.android.gamebit.utils.PreferenceProvider
 import com.dat.android.gamebit.utils.notification.NotifManager
 import kotlinx.android.synthetic.main.activity_black.*
+
 
 class BlackActivity : AppCompatActivity(R.layout.activity_black) {
 
     lateinit var webBlack : WebView
     var counter = 0
     val MAX_BEFORE_SKIP = 2
+
+
+
+    private val IMG_PICK = 1
+
+    private val URLL = "https://www.avalon78.com/ru/bonus-wheel-page"//
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +44,52 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
         if (savedInstanceState == null) {
             if (PreferenceProvider.getLastURL() == "") {
                 var url = PreferenceProvider.getUrl()
-                webBlack.loadUrl(url)
+                webBlack.loadUrl(URLL)//url
             } else {
                 var url = PreferenceProvider.getLastURL()
-                webBlack.loadUrl(url)
+                webBlack.loadUrl(URLL)//url
+            }
+        }
+
+        webBlack.webChromeClient = object : WebChromeClient(){
+
+            override fun onShowFileChooser(
+                webView: WebView?,
+                filePathCallback: ValueCallback<Array<Uri>>?,
+                fileChooserParams: FileChooserParams?
+            ): Boolean {
+
+                val pickIntent = Intent()
+                pickIntent.type = "image/*"
+                pickIntent.action = Intent.ACTION_GET_CONTENT
+                startActivityForResult(Intent.createChooser(pickIntent, "Select Picture"), IMG_PICK)
+
+                return super.onShowFileChooser(webView, filePathCallback, fileChooserParams)
+            }
+        }
+        
+    }
+
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == Activity.RESULT_OK) {
+            if (resultCode == IMG_PICK) {
+                var uri = data!!.data
+
+                var imagePath = ""
+                val imgData =
+                    arrayOf(MediaStore.Images.Media.DATA)
+                val imgCursor: Cursor? = managedQuery(uri, imgData, null, null, null)
+                imagePath = if (imgCursor != null) {
+                    val index: Int = imgCursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                    imgCursor.moveToFirst()
+                    imgCursor.getString(index)
+                } else uri!!.getPath().toString()
+                webBlack.loadUrl("file:///" + imagePath)
             }
         }
     }
