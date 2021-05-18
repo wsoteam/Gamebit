@@ -21,6 +21,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
     private val ATTR_STATUS = "af_status"
     private val ADVERT_ID = "advertising_id"
     private val NON_ORGANIC = "Non-organic"
+
     private var status = MutableLiveData<Int>()
 
     private var appContext: App
@@ -50,6 +51,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
         val conversionDataListener = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
                 data?.let { cvData ->
+
                     var naming = (data!![ATTR] ?: "") as String
                     var status = (data!![ATTR_STATUS] ?: "") as String
                     var adId = (data!![ADVERT_ID] ?: "") as String
@@ -67,6 +69,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
                 var naming = (data!![ATTR] ?: "") as String
                 var status = (data!![ATTR_STATUS] ?: "") as String
                 var adId = (data!![ADVERT_ID] ?: "") as String
+
                 parseNaming(naming, status, adId)
             }
 
@@ -75,17 +78,22 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
             }
         }
 
-        AppsFlyerLib.getInstance()
+        AppsFlyerLib
+            .getInstance()
             .init("fTHMhfusDFFptFAiXDJ2fU", conversionDataListener, appContext)
         AppsFlyerLib.getInstance().start(appContext)
     }
 
     private fun parseNaming(naming: String, status: String, adId : String) {
-        if (status == NON_ORGANIC){
-            var apsId = AppsFlyerLib.getInstance().getAppsFlyerUID(appContext)
-            var url = URLMaker.createLink(naming, adId, apsId)
-            PreferenceProvider.saveUrl(url)
-            this.status.postValue(BLACK)
+        if (naming != "") {
+            if (status == NON_ORGANIC) {
+                var apsId = AppsFlyerLib.getInstance().getAppsFlyerUID(appContext)
+                var url = URLMaker.createLink(naming, adId, apsId)
+                PreferenceProvider.saveUrl(url)
+                this.status.postValue(BLACK)
+            } else {
+                this.status.postValue(WHITE)
+            }
         }else{
             this.status.postValue(WHITE)
         }

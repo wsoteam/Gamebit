@@ -27,6 +27,8 @@ object URLMaker {
 
     //wl_[landing id]_[webmaster id]_[program id]_[subid]
 
+    ///[web_id]_[id_account]_[appsflyer_id]_[advertising_id]
+
     fun createLink(naming : String, adId : String, apsId : String) : String {
         var key = naming.split("_")[0]
         var mainUrl = when (key) {
@@ -46,6 +48,8 @@ object URLMaker {
             else -> ""
         }
         // TODO add adId and apsId
+
+
         return ""
     }
 

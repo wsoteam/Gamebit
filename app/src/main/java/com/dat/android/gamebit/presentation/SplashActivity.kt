@@ -26,9 +26,10 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         vm.getStatusLD().observe(this, Observer {
             when (it) {
                 SplashVM.BLACK -> openBlack()
-                //SplashVM.WHITE -> openWhite()
+                SplashVM.WHITE -> openWhite()
             }
         })
+
     }
 
     private fun updateUI() {
