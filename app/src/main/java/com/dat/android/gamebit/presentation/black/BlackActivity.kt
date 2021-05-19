@@ -1,16 +1,12 @@
 package com.dat.android.gamebit.presentation.black
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
-import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -23,11 +19,11 @@ import kotlinx.android.synthetic.main.activity_black.*
 
 class BlackActivity : AppCompatActivity(R.layout.activity_black) {
 
-    lateinit var webBlack : WebView
+    lateinit var webBlack: WebView
     var counter = 0
     val MAX_BEFORE_SKIP = 2
 
-
+    private var mUploadMessage: ValueCallback<Array<Uri>>? = null
 
     private val IMG_PICK = 1
 
@@ -61,40 +57,31 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
             }
         }
 
-        webBlack.webChromeClient = object : WebChromeClient(){
+        webBlack.webChromeClient = object : WebChromeClient() {
 
             override fun onShowFileChooser(
                 webView: WebView?,
                 filePathCallback: ValueCallback<Array<Uri>>?,
                 fileChooserParams: FileChooserParams?
             ): Boolean {
-
+                mUploadMessage = filePathCallback
                 val pickIntent = Intent()
                 pickIntent.type = "image/*"
                 pickIntent.action = Intent.ACTION_GET_CONTENT
                 startActivityForResult(Intent.createChooser(pickIntent, "Select Picture"), IMG_PICK)
-
-                return super.onShowFileChooser(webView, filePathCallback, fileChooserParams)
+                return true
             }
-
         }
-
     }
+
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
         data: Intent?
     ) {
+        var results = arrayOf(Uri.parse(data!!.dataString))
+        mUploadMessage!!.onReceiveValue(results)
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == Activity.RESULT_OK) {
-            if (resultCode == IMG_PICK) {
-                var uri = data?.extras?.get("data")
-                
-                uri = intent.data
-
-                Log.e("LOL", uri.toString())
-            }
-        }
     }
 
 
@@ -102,7 +89,10 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
         //Создаем программно веб вью
         webBlack = WebView(this)
         // Ставим в веб вью минимально необходимые параметры (высота и ширина). Тут важно тип соблюдать. Если FrameLayout то его и берем
-        webBlack.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
+        webBlack.layoutParams = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.MATCH_PARENT
+        )
         // Добавляем к родителю
         llParent.addView(webBlack)
     }
@@ -112,7 +102,7 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
             webBlack.goBack()
         } else {
             counter++
-            if (counter >= MAX_BEFORE_SKIP){
+            if (counter >= MAX_BEFORE_SKIP) {
                 counter = 0
                 var url = PreferenceProvider.getOfUrl()
                 webBlack.loadUrl(url)
