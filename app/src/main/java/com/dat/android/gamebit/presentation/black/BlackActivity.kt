@@ -1,13 +1,16 @@
 package com.dat.android.gamebit.presentation.black
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -31,9 +34,16 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
     private val URLL = "https://www.avalon78.com/ru/bonus-wheel-page"//
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         createUI()
         NotifManager.setAlarm(this)
+
+        webBlack.settings.allowFileAccess = true
+        webBlack.settings.allowFileAccess = true
+        webBlack.settings.allowContentAccess = true
+        webBlack.settings.supportZoom()
+        webBlack.settings.useWideViewPort = true
 
         webBlack.settings.javaScriptEnabled = true
         webBlack.settings.domStorageEnabled = true
@@ -66,10 +76,10 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
 
                 return super.onShowFileChooser(webView, filePathCallback, fileChooserParams)
             }
-        }
-        
-    }
 
+        }
+
+    }
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
@@ -78,21 +88,15 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == Activity.RESULT_OK) {
             if (resultCode == IMG_PICK) {
-                var uri = data!!.data
+                var uri = data?.extras?.get("data")
+                
+                uri = intent.data
 
-                var imagePath = ""
-                val imgData =
-                    arrayOf(MediaStore.Images.Media.DATA)
-                val imgCursor: Cursor? = managedQuery(uri, imgData, null, null, null)
-                imagePath = if (imgCursor != null) {
-                    val index: Int = imgCursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-                    imgCursor.moveToFirst()
-                    imgCursor.getString(index)
-                } else uri!!.getPath().toString()
-                webBlack.loadUrl("file:///" + imagePath)
+                Log.e("LOL", uri.toString())
             }
         }
     }
+
 
     private fun createUI() {
         //Создаем программно веб вью
