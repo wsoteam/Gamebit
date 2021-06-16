@@ -51,7 +51,9 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
         val conversionDataListener = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
                 data?.let { cvData ->
-
+                    cvData.map {
+                        Log.e("LOL", "conversion_attribute:  ${it.key} = ${it.value}")
+                    }
                     var naming = (data!![ATTR] ?: "") as String
                     var status = (data!![ATTR_STATUS] ?: "") as String
                     var adId = (data!![ADVERT_ID] ?: "") as String
@@ -82,6 +84,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
             .getInstance()
             .init("fTHMhfusDFFptFAiXDJ2fU", conversionDataListener, appContext)
         AppsFlyerLib.getInstance().start(appContext)
+        AppsFlyerLib.getInstance().setDebugLog(true)
     }
 
     private fun parseNaming(naming: String, status: String, adId : String) {
@@ -89,6 +92,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
             if (status == NON_ORGANIC) {
                 var apsId = AppsFlyerLib.getInstance().getAppsFlyerUID(appContext)
                 var url = URLMaker.createLink(naming, adId, apsId)
+                Log.e("LOL", "id ------- $url")
                 PreferenceProvider.saveUrl(url)
                 this.status.postValue(BLACK)
             } else {

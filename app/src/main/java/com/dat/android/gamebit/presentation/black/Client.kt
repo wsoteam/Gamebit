@@ -2,6 +2,7 @@ package com.dat.android.gamebit.presentation.black
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.webkit.CookieManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -19,6 +20,7 @@ class Client : WebViewClient() {
     }
 
     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+        Log.e("LOL", "check URL ======= $url")
         if (PreferenceProvider.getOfUrl() == "" && url!!.contains("clickl")){
             PreferenceProvider.saveOfUrl(url)
         }
