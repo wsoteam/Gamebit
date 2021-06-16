@@ -39,6 +39,8 @@ dependencies {
     //Spinner
     implementation 'com.shawnlin:number-picker:2.4.11'
     implementation 'com.appsflyer:af-android-sdk:6.2.0'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+
     implementation "android.arch.lifecycle:extensions:1.0.0"
     annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
 

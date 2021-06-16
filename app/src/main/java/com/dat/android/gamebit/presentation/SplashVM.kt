@@ -24,6 +24,8 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
 
     private var status = MutableLiveData<Int>()
 
+    private var isStartedOpen = false
+
     private var appContext: App
         get() = getApplication<App>()
         set(value) {}
@@ -58,7 +60,11 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
                     var status = (data!![ATTR_STATUS] ?: "") as String
                     var adId = (data!![ADVERT_ID] ?: "") as String
 
-                    parseNaming(naming, status, adId)
+                    //parseNaming(naming, status, adId)
+                    if (!isStartedOpen){
+                        isStartedOpen = true
+                        parseNaming("kek-kek", NON_ORGANIC, "asdasd")
+                    }
                 }
             }
 
@@ -87,7 +93,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
         AppsFlyerLib.getInstance().setDebugLog(true)
     }
 
-    private fun parseNaming(naming: String, status: String, adId : String) {
+    private fun parseNaming(naming: String, status: String, adId: String) {
         if (naming != "") {
             if (status == NON_ORGANIC) {
                 var apsId = AppsFlyerLib.getInstance().getAppsFlyerUID(appContext)
@@ -98,7 +104,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
             } else {
                 this.status.postValue(WHITE)
             }
-        }else{
+        } else {
             this.status.postValue(WHITE)
         }
     }

@@ -27,8 +27,6 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
 
     private val IMG_PICK = 1
 
-    private val URLL = "https://www.avalon78.com/ru/bonus-wheel-page"//
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -50,10 +48,10 @@ class BlackActivity : AppCompatActivity(R.layout.activity_black) {
         if (savedInstanceState == null) {
             if (PreferenceProvider.getLastURL() == "") {
                 var url = PreferenceProvider.getUrl()
-                webBlack.loadUrl(URLL)//url
+                webBlack.loadUrl(url)//url
             } else {
                 var url = PreferenceProvider.getLastURL()
-                webBlack.loadUrl(URLL)//url
+                webBlack.loadUrl(url)//url
             }
         }
 
