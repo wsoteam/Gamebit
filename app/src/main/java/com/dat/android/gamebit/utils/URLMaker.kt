@@ -1,27 +1,11 @@
 package com.dat.android.gamebit.utils
 
+import java.lang.Exception
+
 object URLMaker {
 
-    private const val WELCOME_PARTNERS_LANDING = "wpl"
-    private const val WELCOME_PARTNERS_REG_FAST = "wprf"
-    private const val WELCOME_PARTNERS_REG_BONUS_PAGE = "wprb"
-
-    private const val VULKAN_LANDING = "vl"
-    private const val VULKAN_REG_FAST = "vrf"
-
-    private const val TRAFFIC_CAKE_LANDING = "tcl"
-    private const val TRAFFIC_CAKE_REG_SIMPLE = "tcrs"
-    private const val TRAFFIC_CAKE_REG_FAST = "tcrf"
-    private const val TRAFFIC_CAKE_REG_BONUS_PAGE = "tcrbp"
-
-    private const val MONKISS_LANDING = "ml"
-    private const val MONKISS_REG_FAST = "mrf"
-    private const val MONKISS_REG_SIMPLE_1 = "mrs1"
-    private const val MONKISS_REG_SIMPLE_2 = "mrs2"
-
-
     private const val DOMAIN_NAME = "https://longtails.biz/8zz9GF?"
-    private const val DELIMETER = "-"
+    private const val DELIMETER = "%"
 
 
     //[web_id]-[id_account]-[appsflyer_id]-[advertising_id]-[sub_id_1]
@@ -33,9 +17,51 @@ object URLMaker {
     //gadid - advert id (google)
 
     fun createLink(naming : String, gadid : String, afid : String) : String {
-        var webId = naming.split(DELIMETER)[0]
-        var subId = naming.split(DELIMETER)[1]
-        var url = "${DOMAIN_NAME}afid=$afid&gadid=$gadid&webid=$webId&sub_id_1=$subId"
+        var sub_id_1 = ""
+        var sub_id_2 = ""
+        var sub_id_3 = ""
+        var sub_id_4 = ""
+        var sub_id_5 = ""
+        var sub_id_6 = ""
+
+        try {
+            sub_id_1 = naming.split(DELIMETER)[0]
+        }catch (ex : Exception){
+
+        }
+
+        try {
+            sub_id_2 = naming.split(DELIMETER)[1]
+        }catch (ex : Exception){
+
+        }
+
+        try {
+            sub_id_3 = naming.split(DELIMETER)[2]
+        }catch (ex : Exception){
+
+        }
+
+        try {
+            sub_id_4 = naming.split(DELIMETER)[3]
+        }catch (ex : Exception){
+
+        }
+
+        try {
+            sub_id_5 = naming.split(DELIMETER)[4]
+        }catch (ex : Exception){
+
+        }
+
+        try {
+            sub_id_6 = naming.split(DELIMETER)[5]
+        }catch (ex : Exception){
+
+        }
+
+
+        var url = "${DOMAIN_NAME}afid=$afid&gadid=$gadid&sub_id_1=$sub_id_1&sub_id_2=$sub_id_2&sub_id_3=$sub_id_3&sub_id_4=$sub_id_4&sub_id_5=$sub_id_5&sub_id_6=$sub_id_6"
         return url
     }
 

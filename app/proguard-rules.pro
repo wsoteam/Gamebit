@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-dontwarn okhttp3.
+-dontwarn okio.
+-dontwarn javax.annotation.
+-dontwarn org.conscript.
+-dontwarn com.appsflyer.**
+
+-keep class com.appsflyer.* { *; }
+-keep public class com.android.installreferrer.* { *; }
