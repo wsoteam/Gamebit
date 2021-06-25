@@ -5,7 +5,7 @@ import java.lang.Exception
 object URLMaker {
 
     private const val DOMAIN_NAME = "https://longtails.biz/8zz9GF?"
-    private const val DELIMETER = "%"
+    private const val DELIMETER = "/"
 
 
     //[web_id]-[id_account]-[appsflyer_id]-[advertising_id]-[sub_id_1]

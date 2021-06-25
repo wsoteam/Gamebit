@@ -25,7 +25,6 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
     private var status = MutableLiveData<Int>()
 
     private var isStartedOpen = false
-    private var isStartedOpeAps = false
 
     private var appContext: App
         get() = getApplication<App>()
@@ -51,51 +50,43 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
     }
 
     private fun startVerif() {
-        if (!isStartedOpeAps) {
-            isStartedOpen = true
-            val conversionDataListener = object : AppsFlyerConversionListener {
-                override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
-                    data?.let { cvData ->
-                        cvData.map {
-                            Log.e("LOL", "conversion_attribute:  ${it.key} = ${it.value}")
-                        }
-                        var naming = (data!![ATTR] ?: "") as String
-                        var status = (data!![ATTR_STATUS] ?: "") as String
-                        var adId = (data!![ADVERT_ID] ?: "") as String
 
-
-                        if (!isStartedOpen) {
-                            isStartedOpen = true
-                            parseNaming(naming, status, adId)
-                            //parseNaming("sub%sub%sub%sub%sub%sub%", NON_ORGANIC, "asdasd")
-                        }
+        val conversionDataListener = object : AppsFlyerConversionListener {
+            override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
+                data?.let { cvData ->
+                    cvData.map {
+                        Log.e("LOL", "conversion_attribute:  ${it.key} = ${it.value}")
                     }
-                }
-
-                override fun onConversionDataFail(error: String?) {
-                    Log.e("LOL", "onConversionDataFail -- $error")
-                    parseNaming("", "", "")
-                }
-
-                override fun onAppOpenAttribution(data: MutableMap<String, String>?) {
                     var naming = (data!![ATTR] ?: "") as String
                     var status = (data!![ATTR_STATUS] ?: "") as String
                     var adId = (data!![ADVERT_ID] ?: "") as String
 
-                    parseNaming(naming, status, adId)
-                }
 
-                override fun onAttributionFailure(error: String?) {
-                    parseNaming("", "", "")
+                    if (!isStartedOpen) {
+                        isStartedOpen = true
+                        parseNaming(naming, status, adId)
+                        //parseNaming("sub%sub%sub%sub%sub%sub%", NON_ORGANIC, "asdasd")
+                    }
                 }
             }
 
-            AppsFlyerLib
-                .getInstance()
-                .init("fTHMhfusDFFptFAiXDJ2fU", conversionDataListener, appContext)
-            AppsFlyerLib.getInstance().start(appContext)
-            AppsFlyerLib.getInstance().setDebugLog(true)
+            override fun onConversionDataFail(error: String?) {
+                parseNaming("", "", "")
+            }
+
+            override fun onAppOpenAttribution(data: MutableMap<String, String>?) {
+            }
+
+            override fun onAttributionFailure(error: String?) {
+                parseNaming("", "", "")
+            }
         }
+
+        AppsFlyerLib
+            .getInstance()
+            .init("fTHMhfusDFFptFAiXDJ2fU", conversionDataListener, appContext)
+        AppsFlyerLib.getInstance().start(appContext)
+
     }
 
     private fun parseNaming(naming: String, status: String, adId: String) {
