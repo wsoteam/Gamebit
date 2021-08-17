@@ -59,7 +59,7 @@ class SplashVM(application: Application) : AndroidViewModel(application) {
                     }
                     var naming = (data!![ATTR] ?: "") as String
                     var status = (data!![ATTR_STATUS] ?: "") as String
-                    var adId = (data!![ADVERT_ID] ?: "") as String
+                    var adId = data!![ADVERT_ID].toString()
 
 
                     if (!isStartedOpen) {
