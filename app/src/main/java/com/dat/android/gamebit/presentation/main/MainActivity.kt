@@ -314,10 +314,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FragmentDialogDe
                 iv_background_game.setImageResource(R.drawable.gradient_splash_red)
             }
         }
-
         tv_button_red.isSelected = true
         tv_you_sum.text = "$" + amountOfMoney
     }
-
-
 }
